@@ -15,9 +15,13 @@
         $div          = $(this),
         $section      = $div.children().first(),
         sectionHeight = $section.height(),
-        height        = $div.height(),
-        offset     = $div.offset(),
-        lastScrollTop = 0;
+        height        = $div.outerHeight(true),
+        offset        = $div.offset(),
+        lastScrollTop = 0,
+        divBottom     = Math.round(height + offset.top - window.innerHeight);
+    console.log(offset);
+    console.log(window.innerHeight);
+    console.log(divBottom);
 
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
@@ -26,46 +30,42 @@
     }
 
     function setHeight() {
-      height = Math.max( 
-        body.scrollHeight, 
-        body.offsetHeight, 
-        html.clientHeight, 
-        html.scrollHeight, 
-        html.offsetHeight 
-      );
+      height = $div.outerHeight(true);
+      offset = $div.offset();
+      divBottom = Math.round(height + offset.top - window.innerHeight);
+      console.log(offset);
+      console.log(window.innerHeight);
+      console.log(divBottom);
+      console.log($(window).scrollTop());
     }
 
     $(window).scroll(function() {
 
       setHeight();
 
-      var delta = 10;
+      var delta = 30;
 
       var st = $(this).scrollTop();
 
-      if(Math.abs(lastScrollTop - st) <= delta){
-        if (st > lastScrollTop){
-          console.log( 'down' );
-        } else {
-          console.log( 'up' );
-        }
-      }
-
       // This sucks, figure something else out
-      if ( st > lastScrollTop && st === offset.top + height - window.innerHeight) {
-        $(document).scrollTop(0);
-      } else if ( st < lastScrollTop && $(document).scrollTop() === 0 ) {
-        $(document).scrollTop(document.body.scrollHeight);
+      if(Math.abs(lastScrollTop - st) >= delta) {
+
+        if ( st > lastScrollTop && st >= divBottom ) {
+          $(document).scrollTop(offset.top);
+        } else if ( st < lastScrollTop && st <= offset.top ) {
+          $(document).scrollTop(document.body.scrollHeight);
+        }
+
       }
 
-      if ( $(window).scrollTop() > ( height - ( window.innerHeight + sectionHeight * 4 ) ) ) {
-        console.log('do the thing');
-        $section.clone().appendTo($div);
-        setHeight();
-        if ( $div.children().length > 40 ) {
-          $div.children().first().remove();
-        }
-      }
+      // if ( $(window).scrollTop() > ( height - ( window.innerHeight + sectionHeight * 4 ) ) ) {
+      //   console.log('do the thing');
+      //   $section.clone().appendTo($div);
+      //   setHeight();
+      //   if ( $div.children().length > 40 ) {
+      //     $div.children().first().remove();
+      //   }
+      // }
 
       lastScrollTop = st;
     });
