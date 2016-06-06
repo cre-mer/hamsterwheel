@@ -39,6 +39,8 @@
       console.log($(window).scrollTop());
     }
 
+    //this is where the condidtional infinite scroll logic will go
+
     $(window).scroll(function() {
 
       setHeight();
@@ -51,9 +53,9 @@
       if(Math.abs(lastScrollTop - st) >= delta) {
 
         if ( st > lastScrollTop && st >= divBottom ) {
-          $(document).scrollTop(offset.top);
+          $(document).scrollTop(offset.top + 1);
         } else if ( st < lastScrollTop && st <= offset.top ) {
-          $(document).scrollTop(divBottom);
+          $(document).scrollTop(divBottom - 1);
         }
 
       }
@@ -76,6 +78,11 @@
     }
 
     init(6);
+
+    // use init number / 2 and rounded to find number for reset
+    // make sure you can scroll a whole view height into div before resetting to an earlier one
+    // smooth out those transitions boy
+    // try to fix append thing? maybe its not necessary
 
     // $('document').ready(function() {
     //   $(window).scroll(function(){
@@ -100,7 +107,7 @@
 //     $(window).scrollTop(i),
 //     a.goingDown = !1
 // }
-//
+
 // l.el = {
 //            feed: $("#feed"),
 //            sections: $("#feed .sections"),
