@@ -43,7 +43,7 @@
 
       setHeight();
 
-      var delta = 30;
+      var delta = 5;
 
       var st = $(this).scrollTop();
 
@@ -53,7 +53,7 @@
         if ( st > lastScrollTop && st >= divBottom ) {
           $(document).scrollTop(offset.top);
         } else if ( st < lastScrollTop && st <= offset.top ) {
-          $(document).scrollTop(document.body.scrollHeight);
+          $(document).scrollTop(divBottom);
         }
 
       }
