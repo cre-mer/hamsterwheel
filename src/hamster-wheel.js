@@ -6,22 +6,43 @@
  * Licensed under the MIT license.
  */
 (function ($) {
-  $.fn.hamsterWheel = function() {
+  $.fn.hamsterWheel = function(options) {
     'use strict';
 
+    var debounce = function(func, wait, immediate) {
+      var timeout;
+      return function() {
+        var context = this, args = arguments;
+        var later = function() {
+          timeout = null;
+          if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+      };
+    };
+
     //create all the things
-    var body          = document.body,
-        html          = document.documentElement,
-        $div          = $(this),
+    var $div          = $(this),
         $section      = $div.children().first(),
         sectionHeight = $section.height(),
         height        = $div.outerHeight(true),
         offset        = $div.offset(),
         lastScrollTop = 0,
-        divBottom     = Math.round(height + offset.top - window.innerHeight);
-    console.log(offset);
-    console.log(window.innerHeight);
-    console.log(divBottom);
+        windowHeight  = window.innerHeight,
+        divBottom     = Math.round(height + offset.top - window.innerHeight),
+        scrollSpeed   = 20,
+        settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
+        scrollTimer,
+        scrollDirection;
+
+    var updateHamsterNumbers = debounce(function(){
+        setHeight();
+        console.log('debounced!');
+      }, 300);
+  
 
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
@@ -32,133 +53,74 @@
     function setHeight() {
       height = $div.outerHeight(true);
       offset = $div.offset();
-      divBottom = Math.round(height + offset.top - window.innerHeight);
-      console.log(offset);
-      console.log(window.innerHeight);
-      console.log(divBottom);
-      console.log($(window).scrollTop());
+      divBottom = Math.round(height + offset.top - windowHeight);
     }
 
-    //this is where the condidtional infinite scroll logic will go
+    // move timeout call somewhere else maybe? timeout is blowing the stack
+    function scrollDown() {
+      window.scrollBy(0,1);
+      scrollTimer = setTimeout(scrollDown, scrollSpeed);
+    }
 
-    $(window).scroll(function() {
+    function scrollUp() {
+      window.scrollBy(0,-1);
+      scrollTimer = setTimeout(scrollUp, scrollSpeed);
+    }
 
-      setHeight();
+    if (settings.infinite) {
 
-      var delta = 5;
+      $(window).scroll(function() {
 
-      var st = $(this).scrollTop();
 
-      // This sucks, figure something else out
-      if(Math.abs(lastScrollTop - st) >= delta) {
+        var st = $(this).scrollTop();
 
-        if ( st > lastScrollTop && st >= divBottom ) {
-          $(document).scrollTop(offset.top + 1);
+        // skip to top or bottom of the page
+        if ( st > lastScrollTop && st >= divBottom) {
+          //scrolling down
+          $(document).scrollTop(offset.top + sectionHeight - windowHeight );
         } else if ( st < lastScrollTop && st <= offset.top ) {
-          $(document).scrollTop(divBottom - 1);
+          //scrolling up
+          $(document).scrollTop(divBottom - sectionHeight + windowHeight);
         }
 
-      }
+        var delta = 20;
+        // If you scroll fast enough, change scroll direction
+        if( Math.abs(lastScrollTop - st) >= delta &&  Math.abs(lastScrollTop - st) < 200 ) {    
+          if ( st > lastScrollTop ) {
+            //scrolling down
+            clearTimeout(scrollTimer);
+            scrollDown();
+          } else if ( st < lastScrollTop ) {
+            //scrolling up
+            clearTimeout(scrollTimer);
+            scrollUp();
+          } else {
+            return false;
+          }
+        }
 
-      // if ( $(window).scrollTop() > ( height - ( window.innerHeight + sectionHeight * 4 ) ) ) {
-      //   console.log('do the thing');
-      //   $section.clone().appendTo($div);
-      //   setHeight();
-      //   if ( $div.children().length > 40 ) {
-      //     $div.children().first().remove();
-      //   }
-      // }
-
-      lastScrollTop = st;
-    });
+        lastScrollTop = st;
+      });
+    }
 
     function init(sectionNumber) {
       cloneSections(sectionNumber);
-      setHeight();
+      if( settings.infinite ){  setHeight(); }
+      if( settings.autoscroll ){ scrollDown(); }
     }
 
-    init(6);
+    init(settings.clones);
 
-    // use init number / 2 and rounded to find number for reset
-    // make sure you can scroll a whole view height into div before resetting to an earlier one
-    // smooth out those transitions boy
-    // try to fix append thing? maybe its not necessary
+    window.addEventListener("resize", updateHamsterNumbers, false);
 
-    // $('document').ready(function() {
-    //   $(window).scroll(function(){
-    //     var st = $(this).scrollTop();
-    //     // This sucks, figure something else out
-    //     if(st > lastScrollTop && document.documentElement.clientHeight + $(document).scrollTop() >= document.body.offsetHeight ) {
-    //       $(document).scrollTop(0);
-    //     } else if ( st < lastScrollTop && $(document).scrollTop() === 0 ) {
-    //       $(document).scrollTop(document.body.scrollHeight);
-    //     }
-    //     lastScrollTop = st;
-    //   });
-    // }); 
+    return this;
   };
+
+  $.fn.hamsterWheel.defaults = {
+    autoscroll: true,
+    infinite: true,
+    speed: "normal",
+    clones: 6,
+  }
+
 }(jQuery));
-
-
-// var o = l.el.sections.find("section")
-//       , i = 0;
-//     i = o.eq(Math.floor(o.length / 2)).offset().top - t,
-//     a.prevScroll = i,
-//     $(window).scrollTop(i),
-//     a.goingDown = !1
-// }
-
-// l.el = {
-//            feed: $("#feed"),
-//            sections: $("#feed .sections"),
-//            firstSection: null ,
-//            lastSection: null ,
-//            toggle: $(".feed-toggle")
-//        },
-// l.showFeed = function(t) {
-//     l.el.feed.fadeOut(500, function() {
-//         l.el.sections.html("");
-//         for (var o = 0; o < l.sectionCount; o++) {
-//             var i = l.newSection(t);
-//             l.el.sections.append(i),
-//             l.appendCount++
-//         }
-//         l.el.firstSection = l.el.sections.find("section:first"),
-//         l.el.lastSection = l.el.sections.find("section:last"),
-//         l.loadImages();
-//         var s = l.el.sections.find("section")
-//           , n = s.eq(Math.floor(s.length / 2)).offset().top;
-//         a.prevScroll = n,
-//         $(window).scrollTop(n),
-//         l.el.feed.fadeIn(500)
-//     })
-// }
-// ,
-// l.watchScroll = function() {
-//     var t = $(window).scrollTop();
-//     if (!l.isLoadingSection) {
-//         var o = l.el.firstSection.height()
-//           , i = l.el.feed.outerHeight() - $(window).height() - l.el.lastSection.height();
-//         o >= t && ($newSection = l.newSection(l.currentName),
-//         l.el.sections.prepend($newSection),
-//         l.appendCount++,
-//         l.loadImages(),
-//         l.el.lastSection.remove(),
-//         l.el.lastSection = l.el.sections.find("section:last"),
-//         l.el.firstSection = l.el.sections.find("section:first"),
-//         a.newScroll = t + l.el.firstSection.height(),
-//         a.prevScroll = a.newScroll,
-//         $(window).scrollTop(a.newScroll)),
-//         t >= i && ($newSection = l.newSection(l.currentName),
-//         l.el.firstSection.remov$(),
-//         l.el.sections.append($newSection),
-//         l.appendCount++,
-//         l.loadImages(),
-//         l.el.lastSection = l.el.sections.find("section:last"),
-//         l.el.firstSection = l.el.sections.find("section:first"),
-//         a.newScroll = t - l.el.firstSection.height(),
-//         a.prevScroll = a.newScroll,
-//         $(window).scrollTop(a.newScroll))
-//     }
-// }
-// ;

@@ -10,9 +10,4 @@
     strictEqual(this.elems.hamsterWheel(), this.elems, 'should be chainable');
   });
 
-  test('is hamsterWheel', function () {
-    expect(1);
-    strictEqual(this.elems.hamsterWheel().text(), 'hamsterWheel0hamsterWheel1hamsterWheel2', 'should be hamsterWheel');
-  });
-
 }(jQuery));
