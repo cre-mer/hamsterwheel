@@ -15,12 +15,12 @@
         var context = this, args = arguments;
         var later = function() {
           timeout = null;
-          if (!immediate) func.apply(context, args);
+          if (!immediate){ func.apply(context, args); }
         };
         var callNow = immediate && !timeout;
         clearTimeout(timeout);
         timeout = setTimeout(later, wait);
-        if (callNow) func.apply(context, args);
+        if (callNow) { func.apply(context, args); }
       };
     };
 
@@ -35,12 +35,10 @@
         divBottom     = Math.round(height + offset.top - window.innerHeight),
         scrollSpeed   = 20,
         settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
-        scrollTimer,
-        scrollDirection;
+        scrollTimer;
 
     var updateHamsterNumbers = debounce(function(){
         setHeight();
-        console.log('debounced!');
       }, 300);
   
 
@@ -59,15 +57,15 @@
     if ( settings.autoscroll ) {
 
       // move timeout call somewhere else maybe? timeout is blowing the stack
-      function scrollDown() {
+      var scrollDown = function() {
         window.scrollBy(0,1);
         scrollTimer = setTimeout(scrollDown, scrollSpeed);
-      }
+      };
 
-      function scrollUp() {
+      var scrollUp = function() {
         window.scrollBy(0,-1);
         scrollTimer = setTimeout(scrollUp, scrollSpeed);
-      }
+      };
 
     }
 
@@ -89,7 +87,10 @@
 
         var delta = 20;
         // If you scroll fast enough, change scroll direction
-        if( Math.abs(lastScrollTop - st) >= delta &&  Math.abs(lastScrollTop - st) < 200 ) {    
+        if( Math.abs(lastScrollTop - st) >= delta 
+          &&  Math.abs(lastScrollTop - st) < 200 
+          && settings.autoscroll === true ) {  
+            
           if ( st > lastScrollTop ) {
             //scrolling down
             clearTimeout(scrollTimer);
@@ -125,6 +126,6 @@
     infinite: true,
     speed: "normal",
     clones: 6,
-  }
+  };
 
 }(jQuery));
