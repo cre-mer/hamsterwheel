@@ -15,7 +15,11 @@ In your web page:
 ```html
 
 <body>
-  <section id="the_wheel"></section>
+  <section id="the_wheel">
+    <div class="container-or-whatever">
+      "All the Content!!!"
+    <div> 
+  </section>
   
   <script src="jquery.js"></script>
   <script src="dist/hamster-wheel.min.js"></script>
@@ -25,6 +29,7 @@ In your web page:
 </body>
 ```
 
+You're going to want to put all of your content inside of a root node, one level inside of the div youre selecting with jquery. You can put it all inside the body and add the class there, or nest it deeper, but the plugin needs to be able to go one level down and copy that node. 
 
 ## Settings
 
