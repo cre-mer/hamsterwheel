@@ -28,8 +28,22 @@ In your web page:
 
 ## Settings
 
+Pass in options: 
+```html
+
+<body>
+  <section id="the_wheel"></section>
+  
+  <script src="jquery.js"></script>
+  <script src="dist/hamster-wheel.min.js"></script>
+  <script>
+      $('#the_wheel').hamsterWheel({ autoscroll: false, clones: 3 });
+  </script>
+</body>
+```
+
 Defaults
-```json
+```
 {
   autoscroll: true,
   infinite: true,

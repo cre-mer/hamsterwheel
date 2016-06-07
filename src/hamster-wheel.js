@@ -25,7 +25,8 @@
     };
 
     //create all the things
-    var $div          = $(this),
+    var settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
+        $div          = $(this),
         $section      = $div.children().first(),
         sectionHeight = $section.height(),
         height        = $div.outerHeight(true),
@@ -34,7 +35,6 @@
         windowHeight  = window.innerHeight,
         divBottom     = Math.round(height + offset.top - window.innerHeight),
         scrollSpeed   = settings.scrollSpeed,
-        settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
         scrollTimer;
 
     var updateHamsterNumbers = debounce(function(){
@@ -128,7 +128,7 @@
     autoscroll: true,
     infinite: true,
     scrollSpeed: 20,
-    scrollDelta: 30,
+    scrollDelta: 15,
     clones: 6,
     scrollbar: false
   };

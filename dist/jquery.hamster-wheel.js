@@ -20,7 +20,8 @@
     };
 
     //create all the things
-    var $div          = $(this),
+    var settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
+        $div          = $(this),
         $section      = $div.children().first(),
         sectionHeight = $section.height(),
         height        = $div.outerHeight(true),
@@ -28,8 +29,7 @@
         lastScrollTop = 0,
         windowHeight  = window.innerHeight,
         divBottom     = Math.round(height + offset.top - window.innerHeight),
-        scrollSpeed   = 20,
-        settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
+        scrollSpeed   = settings.scrollSpeed,
         scrollTimer;
 
     var updateHamsterNumbers = debounce(function(){
@@ -81,11 +81,11 @@
           //scrolling down
           $(document).scrollTop(offset.top + sectionHeight - windowHeight );
         } else if ( st < lastScrollTop && st <= offset.top ) {
-          //scrolling up
+          //scrolling upgit 
           $(document).scrollTop(divBottom - sectionHeight + windowHeight);
         }
 
-        var delta = 20;
+        var delta = settings.scrollDelta;
         // If you scroll fast enough, change scroll direction
         if( Math.abs(lastScrollTop - st) >= delta &&  Math.abs(lastScrollTop - st) < 200 && settings.autoscroll === true ) {  
 
@@ -122,7 +122,8 @@
   $.fn.hamsterWheel.defaults = {
     autoscroll: true,
     infinite: true,
-    speed: "normal",
+    scrollSpeed: 20,
+    scrollDelta: 15,
     clones: 6,
     scrollbar: false
   };
