@@ -45,8 +45,8 @@ Pass in options:
 Defaults
 ```
 {
-  autoscroll: true,
   infinite: true,
+  autoscroll: true,
   scrollSpeed: 20,
   scrollDelta: 30,
   clones: 6,
@@ -54,23 +54,23 @@ Defaults
 }
 ```
 
-Autoscroll - Boolean
-> Do you want the page to scroll on its own?
+####infinite - Boolean
+This is the main purpose of the plugin, but if you decide you only want to loop through a section like, 5 times and have it spit you out into a footer, more power to you. Maybe jQuery .clone() would be better than this whole plugin but hey, im not judging you.
 
-Infinite - Boolean
-> This is the main purpose of the plugin, but if you decide you only want to loop through a section like, 5 times and have it spit you out into a footer, more power to you. Maybe jQuery .clone() would be better than this whole plugin but hey, im not judging you.
+####autoscroll - Boolean
+Do you want the page to scroll on its own?
 
-scrollSpeed - Number
-> This is for the autoscroll. Technically this is the number of milliseconds the page will wait before scrolling down one pixel, so you probably want to keep it somewhere between 10 and 50, but play around with it and see what works.
+####scrollSpeed - Number
+This is for the autoscroll. Technically this is the number of milliseconds the page will wait before scrolling down one pixel, so you probably want to keep it somewhere between 10 and 50, but play around with it and see what works.
 
-scrollDelta - Number
-> When you have autoscroll turned on, how fast does someone need to scroll to change the direction of the autoscroll? Defaults to 30. 
+####scrollDelta - Number
+When you have autoscroll turned on, how fast does someone need to scroll to change the direction of the autoscroll? Defaults to 30. 
 
-clones - Number
-> How many times the content is cloned. 6 is a pretty good number, but if the page is huge and heavy you might want to lower this number, but id suggest 2 or 3 at the minimum. 
+####clones - Number
+How many times the content is cloned. 6 is a pretty good number, but if the page is huge and heavy you might want to lower this number, but id suggest 2 or 3 at the minimum. 
 
-scrollbar - Boolean
-> This will show or hide the scrollbar (in webkit based browsers). I like it off personally, it helps keep up the illusion.
+####scrollbar - Boolean
+This will show or hide the scrollbar (in webkit based browsers). I like it off personally, it helps keep up the illusion.
 
 ## License
 
