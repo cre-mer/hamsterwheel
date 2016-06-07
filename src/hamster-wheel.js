@@ -56,15 +56,19 @@
       divBottom = Math.round(height + offset.top - windowHeight);
     }
 
-    // move timeout call somewhere else maybe? timeout is blowing the stack
-    function scrollDown() {
-      window.scrollBy(0,1);
-      scrollTimer = setTimeout(scrollDown, scrollSpeed);
-    }
+    if ( settings.autoscroll ) {
 
-    function scrollUp() {
-      window.scrollBy(0,-1);
-      scrollTimer = setTimeout(scrollUp, scrollSpeed);
+      // move timeout call somewhere else maybe? timeout is blowing the stack
+      function scrollDown() {
+        window.scrollBy(0,1);
+        scrollTimer = setTimeout(scrollDown, scrollSpeed);
+      }
+
+      function scrollUp() {
+        window.scrollBy(0,-1);
+        scrollTimer = setTimeout(scrollUp, scrollSpeed);
+      }
+
     }
 
     if (settings.infinite) {
@@ -105,8 +109,8 @@
 
     function init(sectionNumber) {
       cloneSections(sectionNumber);
-      if( settings.infinite ){  setHeight(); }
-      if( settings.autoscroll ){ scrollDown(); }
+      if( settings.infinite   ){  setHeight();  }
+      if( settings.autoscroll ){  scrollDown(); }
     }
 
     init(settings.clones);
