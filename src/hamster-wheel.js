@@ -54,6 +54,10 @@
       divBottom = Math.round(height + offset.top - windowHeight);
     }
 
+    if ( settings.scrollbar === false ) {
+      $('body').append('<style>::-webkit-scrollbar{display:none;}</style>');
+    }
+
     if ( settings.autoscroll ) {
 
       // move timeout call somewhere else maybe? timeout is blowing the stack
@@ -71,6 +75,7 @@
 
     if (settings.infinite) {
 
+
       $(window).scroll(function() {
 
 
@@ -87,10 +92,8 @@
 
         var delta = 20;
         // If you scroll fast enough, change scroll direction
-        if( Math.abs(lastScrollTop - st) >= delta 
-          &&  Math.abs(lastScrollTop - st) < 200 
-          && settings.autoscroll === true ) {  
-            
+        if( Math.abs(lastScrollTop - st) >= delta &&  Math.abs(lastScrollTop - st) < 200 && settings.autoscroll === true ) {  
+
           if ( st > lastScrollTop ) {
             //scrolling down
             clearTimeout(scrollTimer);
@@ -126,6 +129,7 @@
     infinite: true,
     speed: "normal",
     clones: 6,
+    scrollbar: false
   };
 
 }(jQuery));
