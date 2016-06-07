@@ -1,5 +1,5 @@
 /*! hamster-wheel - v1.0.0 - 2016-06-07
-* Copyright (c) 2016 John Rae; Licensed MIT */
+* Copyright (c) 2016 Polar Notion; Licensed MIT */
 (function ($) {
   $.fn.hamsterWheel = function(options) {
     'use strict';
