@@ -41,7 +41,6 @@
         setHeight();
       }, 300);
   
-
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
         $section.clone().appendTo($div);
@@ -59,28 +58,20 @@
     }
 
     if ( settings.autoscroll ) {
-
       // move timeout call somewhere else maybe? timeout is blowing the stack
       var scrollDown = function() {
         window.scrollBy(0,1);
         scrollTimer = setTimeout(scrollDown, scrollSpeed);
       };
-
       var scrollUp = function() {
         window.scrollBy(0,-1);
         scrollTimer = setTimeout(scrollUp, scrollSpeed);
       };
-
     }
 
     if (settings.infinite) {
-
-
       $(window).scroll(function() {
-
-
         var st = $(this).scrollTop();
-
         // skip to top or bottom of the page
         if ( st > lastScrollTop && st >= divBottom) {
           //scrolling down
@@ -89,7 +80,6 @@
           //scrolling upgit 
           $(document).scrollTop(divBottom - sectionHeight + windowHeight);
         }
-
         var delta = settings.scrollDelta;
         // If you scroll fast enough, change scroll direction
         if( Math.abs(lastScrollTop - st) >= delta &&  Math.abs(lastScrollTop - st) < 200 && settings.autoscroll === true ) {  
@@ -106,7 +96,6 @@
             return false;
           }
         }
-
         lastScrollTop = st;
       });
     }
@@ -118,9 +107,7 @@
     }
 
     init(settings.clones);
-
     window.addEventListener("resize", updateHamsterNumbers, false);
-
     return this;
   };
 
