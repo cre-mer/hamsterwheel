@@ -1,6 +1,6 @@
 # Hamster Wheel
 
-> Infinite Page Scrolling jQuery Plugin
+An Infinite Page Scrolling jQuery Plugin
 
 
 ## Getting Started
@@ -43,7 +43,7 @@ Pass in options:
 ```
 
 Defaults
-```
+```javascript
 {
   infinite: true,
   autoscroll: true,
