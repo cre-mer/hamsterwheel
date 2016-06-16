@@ -6,36 +6,341 @@
 
   <!-- Load local jQuery. -->
   <script src="./bower_components/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!-- Load local lib and tests. -->
   <script src="./src/hamster-wheel.js"></script>
-</head>
-<body>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
-  <section id="hamster">
-    <div>      
-      <h1>Here is the Nav</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Qui molestias praesentium reiciendis dignissimos rem commodi ipsa natus illum harum, explicabo tempore debitis ullam sequi consequatur aliquid, ducimus, dolores fugiat ad.</p>
-      <h2>Here is some Content</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus officia id, quasi ipsa iure hic voluptatum quam molestias voluptates facere laudantium ad fuga incidunt delectus maxime nihil ut quis adipisci. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et enim nesciunt perferendis, nam molestiae voluptatum esse doloremque beatae impedit obcaecati voluptatibus voluptates repellat eveniet. Optio ut atque expedita enim hic.
-      <br>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Labore inventore, repudiandae repellat quod ut, pariatur iste incidunt quidem voluptas. Sequi aut consequatur harum error obcaecati doloremque dignissimos, magnam libero distinctio.</p>
-      <h2>Footer</h2>
-    </div>
-  </section>
-  
-  <style>
-    h1{
-      margin: 200px 0px;
+  <style type="text/css">
+    h1 {
       font-size: 40px;
-    } 
-    h2 {
-      margin: 150px 0px;
-      font-size: 30px;
+      line-height: 60px;
     }
-    p{ 
-      margin: 60px 0;
+
+    h2 {
+      font-size: 35px;
+      line-height: 45px;
+      margin-top: 60px;
+    }
+
+    h2:first-child {
+      margin-top: 0px;
+    }
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+    }
+    header {
+      margin-bottom: 40px;
+    }
+    .navbar {
+      background-color: #5CACFF;
+    }
+    .container {
+      max-width: 1000px;
+    }
+
+    .container-lg {
+      max-width: 800px;
+    }
+
+    .container-md {
+      max-width: 600px;
+    }
+
+    .container-sm {
+      max-width: 400px;
+    }
+    .btn-primary,
+    .nav-pills>li.active>a,
+    .nav-pills>li.active>a:focus,
+    .nav-pills>li.active>a:hover {
+      color: #fff;
+      background-color: #5CACFF;
+      border-color: #5CACFF;
+    }
+
+    .btn.btn-primary:hover,
+    .btn.btn-primary:active,
+    .btn.btn-primary:focus {
+      color: #fff;
+      background-color: #CC4A40;
+      border-color: #CC4A40;
+      box-shadow: none;
+    }
+
+    .btn-white-outline {
+      background-color: transparent;
+      border-color: white;
+      border-width: 2px;
+      color: white;
+    }
+
+    .btn.btn-white-outline:hover,
+    .btn.btn-white-outline:active,
+    .btn.btn-white-outline:focus {
+      background-color: white;
+      border-color: white;
+      color: #5CACFF;
+      box-shadow: none;
+    }
+
+    .btn-primary-outline {
+      background-color: transparent;
+      border-color: #5CACFF;
+      border-width: 2px;
+      color: #5CACFF;
+    }
+    .navbar-btn {
+      padding: 12px 28px;
+      margin-left: 20px;
+    }
+    .navbar-white .navbar-nav > li > a,
+    .navbar-white .navbar-brand {
+      color: #666;
+      padding-top: 21px;
+      padding-bottom: 21px;
+      -webkit-transition: color 0.3s linear;
+        -moz-transition: color 0.3s linear;
+        -ms-transition: color 0.3s linear;
+        -o-transition: color 0.3s linear;
+        transition: color 0.3s linear;
+    }
+
+    .navbar-nav > li > a,
+    .navbar-brand {
+      color: white;
+      padding-top: 21px;
+      padding-bottom: 21px;
+      -webkit-transition: color 0.3s linear;
+      -moz-transition: color 0.3s linear;
+      -ms-transition: color 0.3s linear;
+      -o-transition: color 0.3s linear;
+      transition: color 0.3s linear;
+      &:focus{
+        background-color: #5CACFF; 
+        color: white;
+      }
+    }
+
+    .navbar-nav > li > a:hover{
+      opacity: .5;
+      background-color: transparent;
+    }
+
+    .text-primary {
+      color: #5CACFF;
+    }
+
+    a.text-primary:hover {
+      color: #5CACFF;
+    }
+
+    .nav-pills>li>a {
+      border-radius: 4px;
+      min-width: 100px;
+      text-align: center;
+      background-color: #eee;
+    }
+
+    .nav-pills>li>a:first-child {
+      margin-right: 5px;
     }
   </style>
+</head>
+<body>
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="http://polarnotion.github.io/turntable/">HamsterWheel.js</a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+            <a href="https://www.producthunt.com/tech/turntable-js" target="_blank"><i class="fa fa-product-hunt"></i> Upvote</a>
+          </li>
+          <li>
+            <a href="#install">Install</a>
+          </li>
+          <a href="Turntable.zip" class="btn btn-white-outline navbar-btn">Try it!</a>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+
+  <div id="hamster">
+    <div class="">
+      <header class="pad-section position-9">
+        <div class="container">
+          <div class="container-center text-center">
+            <h1 class="text-color">HamsterWheel.js<br>Infinite Scroll JQuery Plugin</h1>
+            <em class="text-color lead">"convert your site into a treadmill with Javascript"</em>
+          </div>
+        </div>
+      </header>
+
+      <section id="new" class="pad-section background-white position-99">
+        <div class="container">
+
+          <h2 id="examples">What is this?</h2>
+          <p class="lead">HamsterWheel.js is an infinite scroll JQuery plugin that will let you convert sections of your site into an unending loop. Think of it like a treadmill <em>(or hamsterwheel)</em> made with Javascript. All you need is a section or two, and jQuery.</p>
+
+          <p class="lead">
+            The content keeps coming with an unending loop!
+          </p>
+
+          <h2 id="install">Installation</h2>
+          <p class="lead">Installing the slider is fairly simple. <b>Download Turntable.js</b> and include turntable.min.js in your javascript file or at the bottom of your html document, and <b>call the turntable function</b> on whatever list of images you want to flip through. Oh, and don't forget the CSS. We've included a minified file, or you can just copy and paste the CSS here into your custom stylesheet. Easy peasy.</p>
+          
+          <p class="">Also, while it might go without saying, since this is a <em>JQuery</em> slider, but you will need to make sure JQuery is properly installed. If you try to initialize the slider without JQuery, it won't work.</p>
+          
+          <div>
+
+            <!-- Nav tabs -->
+            <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active">
+                <a href="#html" aria-controls="home" role="tab" data-toggle="tab">HTML</a>
+              </li>
+              <li role="presentation">
+                <a href="#js" aria-controls="profile" role="tab" data-toggle="tab">JS</a>
+              </li>
+              <li role="presentation">
+                <a href="#css" aria-controls="profile" role="tab" data-toggle="tab">CSS</a>
+              </li>
+            </ul>
+
+            <br>
+            
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane active" id="html">
+                <pre class="prettyprint pad">
+
+    &lt;div id="myTurntable" class="turntable"&gt;
+      &lt;ul&gt;
+        &lt;li data-img-src="images/myPic1.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic2.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic3.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic4.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic5.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic6.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic7.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic8.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic9.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic10.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic11.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic12.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic13.jpg"&gt;&lt;/li&gt;
+        &lt;li data-img-src="images/myPic14.jpg"&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/div&gt;
+                </pre>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="js">
+                <pre class="prettyprint pad language-java">
+
+    $('#myTurntable').turntable();
+                </pre>
+              </div>
+              <div role="tabpanel" class="tab-pane" id="css">
+                <pre class="prettyprint pad language-java">
+
+    .turntable {
+      margin: 0px; 
+    }
+    .turntable ul {
+      padding: 0px;
+      margin: 0px; 
+    }
+    .turntable ul li {
+      list-style-type: none;
+      display: none; 
+    }
+    .turntable ul li img {
+      width: 100%; 
+    }
+    .turntable ul li.active {
+      display: block; 
+    }
+                </pre>
+              </div>
+            </div>
+
+          </div>
+
+          <h2 id="settings">Settings</h2>
+          <p class="lead">Turntable.js will accept an object as a parameter. There are three keys you can use to customize the slider. You can decide if you want to flip through the images as your mouse moves along the X or Y axis of the container, or as you scroll down the page using <b>axis</b>. If you want to reverse the direction it goes through the images, pass in <b>reverse: true</b>. You can also decide where the container will start to turn while you scroll down the page. Try playing around with the different options until you find what works best for you. You can pass in the object when you call the plugin like this -</p>
+          <pre class="prettyprint pad language-java">
+
+    $('#mySpinnyContainer').turntable({
+      axis: 'x, y, or scroll',
+      reverse: boolean, // true or false, will reverse the array of images
+      scrollStart: 'top, middle, or bottom', // only necessary if axis = 'scroll'
+    });
+          </pre>
+          <p class="lead">The plugin will default to the X axis if no option is provided.</p>
+          <br>
+
+          <h2>Feedback</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <p class="lead">We've been blown away by the support this simple JQuery slider has gotten. Check out what others are saying online and join the conversation. If you've found it useful, we'd love to hear from you.</p>
+              <p class="lead">Find us on Twitter at <a href="https://twitter.com/polarnotion" target="_blank">@polarnotion</a> or <a href="https://twitter.com/morganjlopes" target="_blank">@morganjlopes</a>. Show us what you've built with the slider.</p>
+            </div>
+            <div class="col-sm-6">
+              <blockquote>
+                "Forget that expensive 3-D rendering, just put a series of images together and you're creating a rather <em>dynamic</em> and wholly <em>immersive experience</em>."
+                <p class="text-right">
+                  <a href="http://www.websitemagazine.com/content/blogs/posts/archive/2016/04/28/turntable-a-click-to-slide-alternative.aspx#sthash.Q9SEfAg0.gUKsIUtx.dpuf" target="_blank">- websitemagazine.com</a>
+                </p>
+              </blockquote>
+            </div>
+          </div>
+
+          <br>
+
+          <ul class="list-inline">
+            <li>See what people are saying on:</li>
+            <li>
+              <a href="https://twitter.com/search?q=turntable.js" target="_blank">
+                <i class="fa fa-twitter"></i> Twitter
+              </a>
+            </li>
+            <li>
+              <a href="https://www.facebook.com/search/top/?q=turntable.js" target="_blank">
+                <i class="fa fa-facebook"></i> Facebook
+              </a>
+            </li>
+            <li>
+              <a href="https://www.reddit.com/r/web_design/comments/4fhx16/turntablejs_a_responsive_JQuery_slider_that_will/" target="_blank">
+                <i class="fa fa-reddit-alien"></i> Reddit
+              </a>
+            </li>
+            <li>
+              <a href="https://www.producthunt.com/tech/turntable-js" target="_blank">
+                <i class="fa fa-product-hunt"></i> Product Hunt
+              </a>
+            </li>
+          </ul>
+          <br>
+          <p>v 2.0</p>
+        </div>
+      </section>
+    </div>
+  </div>
   
   <script type="text/javascript">
     $('#hamster').hamsterWheel();
