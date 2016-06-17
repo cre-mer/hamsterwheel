@@ -1,4 +1,4 @@
-/*! hamster-wheel - v1.0.0 - 2016-06-07
+/*! hamster-wheel - v1.0.0 - 2016-06-17
 * Copyright (c) 2016 Polar Notion; Licensed MIT */
 (function ($) {
   $.fn.hamsterWheel = function(options) {
@@ -38,7 +38,7 @@
   
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
-        $section.clone().appendTo($div);
+        $section.clone(true, true).appendTo($div);
       }
     }
 

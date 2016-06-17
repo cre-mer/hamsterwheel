@@ -43,7 +43,7 @@
   
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
-        $section.clone().appendTo($div);
+        $section.clone(true).appendTo($div);
       }
     }
 
