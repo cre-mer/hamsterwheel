@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>Plugin Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- Load local jQuery. -->
   <script src="../bower_components/jquery/dist/jquery.js"></script>
@@ -14,21 +15,11 @@
 </head>
 <body>
 
-  <div id="hamster">
+  <div>
 
     <nav class="navbar">
-      <a class="navbar-brand" href="#">HamsterWheel.js</a>      
-      <br>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <ul class="nav navbar-nav nav-actions">
-        <li>
-          <a href="#" target="_blank"><i class="fa fa-product-hunt"></i> Upvote</a>
-        </li>
-        <li>
-          <a href="#install">Install</a>
-        </li>
-        <a href="#" class="btn btn-white-outline navbar-btn">Try it!</a>
-      </ul>
+      <h1 class="nav-header">Hamster Wheel</h1>
+      <a href="Hamsterwheel.zip" class="btn btn-primary nav-btn">Get the Plugin!</a>
     </nav>
 
     <header class="pad-section position-9">
@@ -51,95 +42,64 @@
         </p>
 
         <h2 id="install">Installation</h2>
-        <p class="lead">Installing the slider is fairly simple. <b>Download Turntable.js</b> and include turntable.min.js in your javascript file or at the bottom of your html document, and <b>call the turntable function</b> on whatever list of images you want to flip through. Oh, and don't forget the CSS. We've included a minified file, or you can just copy and paste the CSS here into your custom stylesheet. Easy peasy.</p>
+        <p class="lead">Installation of hamster wheel should be fairly simple. Download the Production or the Dev version of the javascript, or click on the download button in the blue part of the page. </p>
         
-        <p class="">Also, while it might go without saying, since this is a <em>JQuery</em> slider, but you will need to make sure JQuery is properly installed. If you try to initialize the slider without JQuery, it won't work.</p>
+        <p class=""></p>
         
         <div>
-
-          <!-- Nav tabs -->
-          <ul class="nav nav-pills" role="tablist">
-            <li role="presentation" class="active">
-              <a href="#html" aria-controls="home" role="tab" data-toggle="tab">HTML</a>
-            </li>
-            <li role="presentation">
-              <a href="#js" aria-controls="profile" role="tab" data-toggle="tab">JS</a>
-            </li>
-            <li role="presentation">
-              <a href="#css" aria-controls="profile" role="tab" data-toggle="tab">CSS</a>
-            </li>
-          </ul>
-
-          <br>
           
           <!-- Tab panes -->
-          <div class="tab-content">
-            <div role="tabpanel" class="tab-pane active" id="html">
-              <pre class="prettyprint pad">
 
-&lt;div id="myTurntable" class="turntable"&gt;
-  &lt;ul&gt;
-    &lt;li data-img-src="images/myPic1.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic2.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic3.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic4.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic5.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic6.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic7.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic8.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic9.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic10.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic11.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic12.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic13.jpg"&gt;&lt;/li&gt;
-    &lt;li data-img-src="images/myPic14.jpg"&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-              </pre>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="js">
-              <pre class="prettyprint pad language-java">
-
-$('#myTurntable').turntable();
-              </pre>
-            </div>
-            <div role="tabpanel" class="tab-pane" id="css">
-              <pre class="prettyprint pad language-java">
-
-.turntable {
-  margin: 0px; 
-}
-.turntable ul {
-  padding: 0px;
-  margin: 0px; 
-}
-.turntable ul li {
-  list-style-type: none;
-  display: none; 
-}
-.turntable ul li img {
-  width: 100%; 
-}
-.turntable ul li.active {
-  display: block; 
-}
-              </pre>
-            </div>
-          </div>
-
+          <pre class="prettyprint pad language-html">
+&lt;body id="mySite"&gt;
+  // need to have one root node inside of the body or in an iframe
+  &lt;container&gt;
+  // Site Content
+  &lt;/container&gt;
+  &lt;script type="text/javascript"&gt;
+    $('#mySite').hamsterwheel();
+  &lt;/script&gt;
+&lt;/body&gt;
+          </pre>
         </div>
 
         <h2 id="settings">Settings</h2>
-        <p class="lead">Turntable.js will accept an object as a parameter. There are three keys you can use to customize the slider. You can decide if you want to flip through the images as your mouse moves along the X or Y axis of the container, or as you scroll down the page using <b>axis</b>. If you want to reverse the direction it goes through the images, pass in <b>reverse: true</b>. You can also decide where the container will start to turn while you scroll down the page. Try playing around with the different options until you find what works best for you. You can pass in the object when you call the plugin like this -</p>
+        <p class="lead"></p>
         <pre class="prettyprint pad language-java">
-
-$('#mySpinnyContainer').turntable({
-  axis: 'x, y, or scroll',
-  reverse: boolean, // true or false, will reverse the array of images
-  scrollStart: 'top, middle, or bottom', // only necessary if axis = 'scroll'
-});
+hamsterWheel.defaults = {
+  autoscroll: true, //boolean
+  infinite: true,   //boolean
+  scrollSpeed: 40,  //number
+  scrollDelta: 15,  //number
+  clones: 6,        //number
+  scrollbar: false  //boolean
+};
         </pre>
-        <p class="lead">The plugin will default to the X axis if no option is provided.</p>
+        <p class="lead">
+          <b>autoScroll:</b> Boolean
+          <br>
+          If true, the page will scroll on its own based on the scroll speed.
+          <br>
+          <b>infinite:</b> Boolean
+          <br>
+          This is the main purpose of the plugin, but if you decide you only want to loop through a section like, 5 times and have it spit you out into a footer, more power to you. Maybe jQuery .clone() would be better than this whole plugin but hey, im not judging you.
+          <br>
+          <b>scrollSpeed:</b> Number
+          <br>
+          This is for the autoscroll. Technically this is the number of milliseconds the page will wait before scrolling down one pixel, so you probably want to keep it somewhere between 10 and 50, but play around with it and see what works.
+          <br>
+          <b>scrollDelta:</b> Number
+          <br>
+          When you have autoscroll turned on, how fast does someone need to scroll to change the direction of the autoscroll? Defaults to 30. 
+          <br>
+          <b>clones:</b> Number
+          <br>
+          How many times the content is cloned. 6 is a pretty good number, but if the page is huge and heavy you might want to lower this number, but id suggest 2 or 3 at the minimum. 
+          <br>
+          <b>scrollbar:</b> Boolean
+          <br>
+          This will show or hide the scrollbar (in webkit based browsers). I like it off personally, it helps keep up the illusion.
+        </p>
         <br>
 
       </div>

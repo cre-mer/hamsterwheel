@@ -1,23 +1,8 @@
-/*! hamster-wheel - v1.0.0 - 2016-06-17
+/*! hamster-wheel - v1.0.0 - 2016-06-20
 * Copyright (c) 2016 Polar Notion; Licensed MIT */
 (function ($) {
   $.fn.hamsterWheel = function(options) {
     'use strict';
-
-    var debounce = function(func, wait, immediate) {
-      var timeout;
-      return function() {
-        var context = this, args = arguments;
-        var later = function() {
-          timeout = null;
-          if (!immediate){ func.apply(context, args); }
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) { func.apply(context, args); }
-      };
-    };
 
     //create all the things
     var settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
@@ -31,14 +16,10 @@
         divBottom     = Math.round(height + offset.top - window.innerHeight),
         scrollSpeed   = settings.scrollSpeed,
         scrollTimer;
-
-    var updateHamsterNumbers = debounce(function(){
-        setHeight();
-      }, 300);
   
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
-        $section.clone(true, true).appendTo($div);
+        $section.clone(true).appendTo($div);
       }
     }
 
@@ -102,14 +83,16 @@
     }
 
     init(settings.clones);
-    window.addEventListener("resize", updateHamsterNumbers, false);
+    $(window).resize( function(){
+      setHeight();
+    });
     return this;
   };
 
   $.fn.hamsterWheel.defaults = {
     autoscroll: true,
     infinite: true,
-    scrollSpeed: 20,
+    scrollSpeed: 40,
     scrollDelta: 15,
     clones: 6,
     scrollbar: false

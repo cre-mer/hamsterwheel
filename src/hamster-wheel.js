@@ -9,21 +9,6 @@
   $.fn.hamsterWheel = function(options) {
     'use strict';
 
-    var debounce = function(func, wait, immediate) {
-      var timeout;
-      return function() {
-        var context = this, args = arguments;
-        var later = function() {
-          timeout = null;
-          if (!immediate){ func.apply(context, args); }
-        };
-        var callNow = immediate && !timeout;
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-        if (callNow) { func.apply(context, args); }
-      };
-    };
-
     //create all the things
     var settings      = $.extend({}, $.fn.hamsterWheel.defaults, options),
         $div          = $(this),
@@ -36,10 +21,6 @@
         divBottom     = Math.round(height + offset.top - window.innerHeight),
         scrollSpeed   = settings.scrollSpeed,
         scrollTimer;
-
-    var updateHamsterNumbers = debounce(function(){
-        setHeight();
-      }, 300);
   
     function cloneSections(num) {  
       for (var i = 0; i < num; i++) {
@@ -107,14 +88,16 @@
     }
 
     init(settings.clones);
-    window.addEventListener("resize", updateHamsterNumbers, false);
+    $(window).resize( function(){
+      setHeight();
+    });
     return this;
   };
 
   $.fn.hamsterWheel.defaults = {
     autoscroll: true,
     infinite: true,
-    scrollSpeed: 20,
+    scrollSpeed: 40,
     scrollDelta: 15,
     clones: 6,
     scrollbar: false

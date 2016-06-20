@@ -1,161 +1,175 @@
-    h1 {
-      font-size: 40px;
-      line-height: 60px;
-    }
+h1 {
+  font-size: 4rem;
+  line-height: 60px;
+}
 
-    h2 {
-      font-size: 35px;
-      line-height: 45px;
-      margin-top: 60px;
-    }
+h2 {
+  font-size: 35px;
+  line-height: 45px;
+  margin-top: 60px;
+}
 
-    h2:first-child {
-      margin-top: 0px;
-    }
+h2:first-child {
+  margin-top: 0px;
+}
 
-    h3 {
-      margin-top: 0px;
-    }
+h3 {
+  margin-top: 0px;
+  font-size: 5rem;
+}
 
-    h1, h2, h3, h4, h5, h6 {
-      font-weight: 700;
-    }
-    header {
-      margin-bottom: 40px;
-    }
-    .navbar {
-      background-color: #5CACFF;
-      height: 600px;
-      font-size: 50px;
-      display: flex;
-      justify-content: center;
-    }
-    .navbar-brand {
-      font-size: 60px;
-      font-weight: bold;
-      width: 100vw;
-      order: 1;
-    }
-    .nav-actions {
-      width: 100vw;
-      order: 2;
-    }
-    .container {
-      max-width: 1000px;
-    }
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 700;
+}
+header {
+  margin-bottom: 40px;
+}
+p {
+  font-size: 3rem;
+}
 
-    .container-lg {
-      max-width: 800px;
-    }
+nav {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-direction: column;
+  background-color: #333;
+  color: #F0F0F0;
+  transition: top 0.4s ease-in ;
+}
+pre {
+  font-size: 2rem;
+}
+.lead {
+  font-size: 3rem;
+}
+.navbar {
+  background-color: #5CACFF;
+  height: 600px;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+}
+.nav-actions {
+  width: 100vw;
+  order: 2;
+}
+.nav-btn {
+  padding: 20px 40px;
+  margin-top: 20px;
+  font-size: 2rem;
+}
+.pad-section {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+.container {
+  max-width: 1000px;
+}
 
-    .container-md {
-      max-width: 600px;
-    }
+.container-lg {
+  max-width: 800px;
+}
 
-    .container-sm {
-      max-width: 400px;
-    }
-    .btn-primary,
-    .nav-pills>li.active>a,
-    .nav-pills>li.active>a:focus,
-    .nav-pills>li.active>a:hover {
-      color: #fff;
-      background-color: #5CACFF;
-      border-color: #5CACFF;
-    }
+.container-md {
+  max-width: 600px;
+}
 
-    .btn.btn-primary:hover,
-    .btn.btn-primary:active,
-    .btn.btn-primary:focus {
-      color: #fff;
-      background-color: #CC4A40;
-      border-color: #CC4A40;
-      box-shadow: none;
-    }
+.container-sm {
+  max-width: 400px;
+}
+.btn-primary,
+.nav-pills>li.active>a,
+.nav-pills>li.active>a:focus,
+.nav-pills>li.active>a:hover {
+  color: #fff;
+  background-color: #5CACFF;
+  border-color: white;
+}
 
-    .btn-white-outline {
-      background-color: transparent;
-      border-color: white;
-      border-width: 2px;
-      color: white;
-    }
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+.btn.btn-primary:focus {
+  color: #fff;
+  background-color: #4393E6;
+  border-color: white;
+  box-shadow: none;
+}
 
-    .btn.btn-white-outline:hover,
-    .btn.btn-white-outline:active,
-    .btn.btn-white-outline:focus {
-      background-color: white;
-      border-color: white;
-      color: #5CACFF;
-      box-shadow: none;
-    }
+.btn-white-outline {
+  background-color: transparent;
+  border-color: white;
+  border-width: 2px;
+  color: white;
+}
 
-    .btn-primary-outline {
-      background-color: transparent;
-      border-color: #5CACFF;
-      border-width: 2px;
-      color: #5CACFF;
-    }
-    .navbar-btn {
-      padding: 12px 28px;
-      margin-left: 20px;
-    }
-    .navbar-white .navbar-nav > li > a,
-    .navbar-white .navbar-brand {
-      color: #666;
-      padding-top: 21px;
-      padding-bottom: 21px;
-      -webkit-transition: color 0.3s linear;
-        -moz-transition: color 0.3s linear;
-        -ms-transition: color 0.3s linear;
-        -o-transition: color 0.3s linear;
-        transition: color 0.3s linear;
-    }
+.btn.btn-white-outline:hover,
+.btn.btn-white-outline:active,
+.btn.btn-white-outline:focus {
+  background-color: white;
+  border-color: white;
+  color: #5CACFF;
+  box-shadow: none;
+}
 
-    .navbar-nav > li > a,
-    .navbar-brand {
-      color: white;
-      padding-top: 21px;
-      padding-bottom: 21px;
-      -webkit-transition: color 0.3s linear;
-      -moz-transition: color 0.3s linear;
-      -ms-transition: color 0.3s linear;
-      -o-transition: color 0.3s linear;
-      transition: color 0.3s linear;
-      &:focus{
-        background-color: #5CACFF; 
-        color: white;
-      }
-    }
+.btn-primary-outline {
+  background-color: transparent;
+  border-color: #5CACFF;
+  border-width: 2px;
+  color: #5CACFF;
+}
+.navbar-btn {
+  padding: 12px 28px;
+  margin-left: 20px;
+}
+.navbar-white .navbar-nav > li > a,
+.navbar-white .navbar-brand {
+  color: #666;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  -webkit-transition: color 0.3s linear;
+  -moz-transition: color 0.3s linear;
+  -ms-transition: color 0.3s linear;
+  -o-transition: color 0.3s linear;
+  transition: color 0.3s linear;
+}
 
-    .navbar-nav > li > a:hover{
-      opacity: .5;
-      background-color: transparent;
-    }
+.nav-header {
+  color: white;
+  -webkit-transition: color 0.3s linear;
+  -moz-transition: color 0.3s linear;
+  -ms-transition: color 0.3s linear;
+  -o-transition: color 0.3s linear;
+  transition: color 0.3s linear;
+  font-size: 60px;
+  font-weight: bold;
+  width: 100vw;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  text-align: center;
+}
+.navbar-nav > li > a:hover{
+  opacity: .5;
+  background-color: transparent;
+}
 
-    .text-primary {
-      color: #5CACFF;
-    }
+.text-primary {
+  color: #5CACFF;
+}
 
-    a.text-primary:hover {
-      color: #5CACFF;
-    }
+a.text-primary:hover {
+  color: #5CACFF;
+}
 
-    .nav-pills>li>a {
-      border-radius: 4px;
-      min-width: 100px;
-      text-align: center;
-      background-color: #eee;
-    }
+.nav-pills>li>a {
+  border-radius: 4px;
+  min-width: 100px;
+  text-align: center;
+  background-color: #eee;
+}
 
-    .nav-pills>li>a:first-child {
-      margin-right: 5px;
-    }
-    nav {
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      background-color: #333;
-      color: #F0F0F0;
-      transition: top 0.4s ease-in ;
-    }
+.nav-pills>li>a:first-child {
+  margin-right: 5px;
+}
+
