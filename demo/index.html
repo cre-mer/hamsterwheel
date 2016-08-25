@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Plugin Playground</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Load local jQuery. -->
+  <script src="../bower_components/jquery/dist/jquery.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <!-- Load local lib and tests. -->
+  <script src="../src/hamster-wheel.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+  <div>
+
+    <nav class="navbar">
+      <h1 class="nav-header">Hamster Wheel</h1>
+      <a href="Hamsterwheel.zip" class="btn btn-primary nav-btn">Get the Plugin!</a>
+    </nav>
+
+    <header class="pad-section position-9">
+      <div class="container">
+        <div class="container-center text-center">
+          <h1 class="text-color">HamsterWheel.js<br>Infinite Scroll JQuery Plugin</h1>
+          <em class="text-color lead">"convert your site into a treadmill with Javascript"</em>
+        </div>
+      </div>
+    </header>
+
+    <section id="new" class="pad-section background-white position-99">
+      <div class="container">
+
+        <h2 id="examples">What is this?</h2>
+        <p class="lead">HamsterWheel.js is an infinite scroll JQuery plugin that will let you convert sections of your site into an unending loop. Think of it like a treadmill <em>(or hamsterwheel)</em> made with Javascript. All you need is a section or two, and jQuery.</p>
+
+        <p class="lead">
+          The content keeps coming with an unending loop!
+        </p>
+
+        <h2 id="install">Installation</h2>
+        <p class="lead">Installation of hamster wheel should be fairly simple. Download the Production or the Dev version of the javascript, or click on the download button in the blue part of the page. </p>
+        
+        <p class=""></p>
+        
+        <div>
+          
+          <!-- Tab panes -->
+
+          <pre class="prettyprint pad language-html">
+&lt;body id="mySite"&gt;
+  // need to have one root node inside of the body or in an iframe
+  &lt;container&gt;
+  // Site Content
+  &lt;/container&gt;
+  &lt;script type="text/javascript"&gt;
+    $('#mySite').hamsterwheel();
+  &lt;/script&gt;
+&lt;/body&gt;
+          </pre>
+        </div>
+
+        <h2 id="settings">Settings</h2>
+        <p class="lead"></p>
+        <pre class="prettyprint pad language-java">
+hamsterWheel.defaults = {
+  autoscroll: true, //boolean
+  infinite: true,   //boolean
+  scrollSpeed: 40,  //number
+  scrollDelta: 15,  //number
+  clones: 6,        //number
+  scrollbar: false  //boolean
+};
+        </pre>
+        <p class="lead">
+          <b>autoScroll:</b> Boolean
+          <br>
+          If true, the page will scroll on its own based on the scroll speed.
+          <br>
+          <b>infinite:</b> Boolean
+          <br>
+          This is the main purpose of the plugin, but if you decide you only want to loop through a section like, 5 times and have it spit you out into a footer, more power to you. Maybe jQuery .clone() would be better than this whole plugin but hey, im not judging you.
+          <br>
+          <b>scrollSpeed:</b> Number
+          <br>
+          This is for the autoscroll. Technically this is the number of milliseconds the page will wait before scrolling down one pixel, so you probably want to keep it somewhere between 10 and 50, but play around with it and see what works.
+          <br>
+          <b>scrollDelta:</b> Number
+          <br>
+          When you have autoscroll turned on, how fast does someone need to scroll to change the direction of the autoscroll? Defaults to 30. 
+          <br>
+          <b>clones:</b> Number
+          <br>
+          How many times the content is cloned. 6 is a pretty good number, but if the page is huge and heavy you might want to lower this number, but id suggest 2 or 3 at the minimum. 
+          <br>
+          <b>scrollbar:</b> Boolean
+          <br>
+          This will show or hide the scrollbar (in webkit based browsers). I like it off personally, it helps keep up the illusion.
+        </p>
+        <br>
+
+      </div>
+    </section>
+  </div>
+  
+  <script type="text/javascript">
+    $('body').hamsterWheel();
+  </script>
+</body>
+</html>
