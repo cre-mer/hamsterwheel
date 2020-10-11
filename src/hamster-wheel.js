@@ -18,7 +18,7 @@
         offset        = $div.offset(),
         lastScrollTop = 0,
         windowHeight  = window.innerHeight,
-        divBottom     = Math.round(height + offset.top - window.innerHeight),
+        divBottom     = Math.round(height + offset.top - windowHeight),
         scrollSpeed   = settings.scrollSpeed,
         scrollTimer;
   
