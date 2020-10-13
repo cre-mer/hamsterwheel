@@ -13,11 +13,11 @@
         offset        = $div.offset(),
         lastScrollTop = 0,
         windowHeight  = window.innerHeight,
-        divBottom     = Math.round(height + offset.top - window.innerHeight),
+        divBottom     = Math.round(height + offset.top - windowHeight),
         scrollSpeed   = settings.scrollSpeed,
         scrollTimer;
-  
-    function cloneSections(num) {  
+
+    function cloneSections(num) {
       for (var i = 0; i < num; i++) {
         $section.clone(true).appendTo($div);
       }
